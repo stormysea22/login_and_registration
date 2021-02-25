@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="users/register" method="POST" id="registration">
+        {%csrf_token%}
+        First Name: <input type="text" name="first_name" ><br>
+        Last Name <input type="text" name="last_name" ><br>
+        Email Address: <input type="email" name="email_address"><br>
+        Password: <input type="password" name="password" ><br>
+        Confirm Password: <input type="password" name="password_confirm" ><br>
+        Must be over 13 Years Old: <input type="date" name="birth_date" ><br>
+        <input type="submit">
+    </form>
+    <h1>Login</h1>
+    <form action="users/login" method="POST" id="login">
+        {%csrf_token%}
+        Email Address: <input type="email" name="email_address" ><br>
+        password: <input type="password" name="password"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
